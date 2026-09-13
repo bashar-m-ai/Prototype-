@@ -31,6 +31,11 @@ def explain_error(error):
     code = detail.get('code')
     code = code if isinstance(code, str) and re.fullmatch(r'[a-zA-Z0-9_]{1,80}', code) else 'unknown'
     parameter = detail.get('param')
+    message = detail.get('message', '')
+    message = message if isinstance(message, str) else ''
+    message = re.sub(r'sk-[A-Za-z0-9_-]+', '[redacted key]', message)
+    message = re.sub(r'data:image/[^\s\"]+', '[image omitted]', message)
+    message = ' '.join(message.split())[:350]
     request_id = error.headers.get('x-request-id', '') if error.headers else ''
     request_id = request_id if re.fullmatch(r'[a-zA-Z0-9_-]{1,100}', request_id) else 'unavailable'
     logging.getLogger(__name__).warning('OpenAI request failed: HTTP %s code=%s request_id=%s', error.code, code, request_id)
@@ -48,7 +53,7 @@ def explain_error(error):
         return 'OpenAI is rate-limiting requests. Wait a minute and try again. Your records are saved.'
     if error.code == 400:
         hint = ' Check OPENAI_MODEL supports images and JSON output.' if parameter in ('model', 'text.format', 'text.format.type', 'max_output_tokens') else ''
-        return 'OpenAI rejected the request (400; ' + code + ').' + hint + ' Send this message so we can fix the request.'
+        return 'OpenAI rejected the request (400; ' + code + '). ' + (message or 'No explanation was supplied.') + hint
     if error.code >= 500:
         return 'OpenAI returned a server error (' + str(error.code) + '). Try again shortly; your records are saved.'
     return 'OpenAI request failed (HTTP ' + str(error.code) + '; ' + code + '). Send this message so we can investigate.'
@@ -57,7 +62,7 @@ def ask(data_dir, instruction, data, image=None):
     key = api_key(data_dir)
     if not key:
         raise AIError('Add OPENAI_API_KEY to the app service’s Railway Variables and redeploy.' if os.getenv('RAILWAY_ENVIRONMENT_ID') else 'Connect your OpenAI key in Settings first. You can still build your menu by hand.')
-    content = [{'type': 'input_text', 'text': json.dumps(data, ensure_ascii=False)}]
+    content = [{'type': 'input_text', 'text': 'Return the requested JSON object. Here is the data to examine:\n' + json.dumps(data, ensure_ascii=False)}]
     if image:
         content.append({'type': 'input_image', 'image_url': image, 'detail': 'high'})
     payload = {'model': (os.getenv('OPENAI_MODEL', '').strip() or 'gpt-4.1-mini'), 'store': False,
