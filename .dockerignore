@@ -1,0 +1,9 @@
+.git
+.venv
+**/__pycache__
+**/*.pyc
+**/data
+**/.env
+**/secret.json
+**/secrets.json
+node_modules

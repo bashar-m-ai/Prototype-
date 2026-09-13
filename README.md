@@ -1,3 +1,17 @@
+# St. Barts · Service Stories
+
+**The current build is Mark 1, with a Python backend.**
+
+- [Open the Mark 1 code and guide](mark1/README.md)
+- [GitHub → Railway + OpenAI setup](SETUP.md)
+- [Working product direction](mark1/PRODUCT.md)
+
+Run `Start Mark 1.command` and open http://127.0.0.1:4190.
+
+The notes below describe the earlier JavaScript prototype, preserved as reference. Its data is not imported into Mark 1.
+
+---
+
 # St. Barts — Service Stories
 
 A local prototype for discovering the product through real services.
