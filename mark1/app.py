@@ -84,7 +84,7 @@ def create_app(data_dir=None):
     @app.get('/health')
     def health():
         g.db.execute('SELECT 1')
-        return jsonify(ok=True)
+        return jsonify(ok=True, build=os.getenv('RAILWAY_GIT_COMMIT_SHA','local')[:12])
 
     def state():
         today = request.args.get('day', date.today().isoformat())
