@@ -1,3 +1,11 @@
+# Current interface
+
+Menu and Stock are the active screens. Service is a Coming soon placeholder. Use the Stock tab for search, +/− updates, reminders, ordering/prep and recent changes. Food icon fields offer a food-emoji picker. The old Service Stories label is no longer displayed. Previous shift records remain in the database/export; shift-entry screens are not currently exposed.
+
+The documentation below describes the initial Mark 1 foundation and includes earlier service features now hidden.
+
+---
+
 # Service Stories · Mark 1
 
 A shared kitchen memory that helps the team know what is ready, what is missing, and what to do next. Built first for Saint Bart’s.

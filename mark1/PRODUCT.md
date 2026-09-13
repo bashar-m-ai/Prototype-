@@ -1,3 +1,11 @@
+# Current direction
+
+The current app focuses on **Menu and Stock**. Service stays in navigation as a Coming soon page. The Service Stories name has been removed from the visible app; a new name is undecided. Stock has a searchable list, direct +/− actions, reminders and ordering/prep in panels. Food icons are selected from a compact emoji picker. Saved records are preserved.
+
+The following earlier plan is retained as background, not the current visible scope.
+
+---
+
 # Working product direction
 
 Working name: **Service Stories**. Restaurant: Saint Bart’s. We have not chosen the final product name.

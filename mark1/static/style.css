@@ -24,3 +24,33 @@ dialog .amount-label{margin:22px 0 5px;color:#82728e}
 dialog .step-hint{text-align:center;font-size:13px;margin:4px 0 15px}
 .movement-details{margin-top:8px}
 @media(max-width:760px){dialog.action-sheet{margin:auto auto 10px;max-height:calc(100dvh - 20px)}.action-sheet #sheet-body{max-height:calc(100dvh - 22px)}.action-sheet .sheet-scroll{padding:28px 23px 8px}.action-sheet .sheet-footer{padding-left:23px;padding-right:23px}.action-sheet .sheet-scroll>p:not(.eyebrow):not(.inline-error){margin:8px 0 12px;font-size:14px;line-height:1.5}}
+/* Menu and stock are active; service remains a small coming-soon destination. */
+.nav-soon{font-size:10px;letter-spacing:.3px;background:#eae3f0;padding:3px 5px;border-radius:7px;color:#81728c}
+nav a.active .nav-soon{background:#ffffff20;color:#e6d9ef}
+.stock-search{display:flex;align-items:center;gap:10px;background:white;border:1px solid var(--line);border-radius:18px;padding:0 16px;margin:0 0 15px}
+.stock-search>span{font-size:25px;color:#9c8baa}
+.stock-search input{font:inherit;border:0;outline-offset:0;background:transparent;width:100%;min-width:0;padding:16px 0;color:var(--ink)}
+.stock-tools{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+.stock-tools .pill{font-size:14px;padding:10px 14px}
+.inventory-list{display:grid;gap:10px}
+.inventory-row{display:flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);border-radius:22px;padding:12px}
+.inventory-item{display:flex;gap:13px;align-items:center;flex:1;min-width:0;background:transparent;color:var(--ink);text-align:left;padding:0;min-height:52px}
+.inventory-item>span:last-child{min-width:0}
+.inventory-item strong{display:block;font-size:16px;font-weight:550;overflow-wrap:anywhere}
+.inventory-item small{display:block;font-size:13px;color:var(--soft);margin-top:5px;overflow-wrap:anywhere}
+.inventory-actions{display:flex;gap:7px;flex-shrink:0}
+.inventory-actions button{height:44px;width:44px;background:#f0e9f6;color:#634976;font-size:25px;border-radius:15px}
+.inventory-actions button:last-child{background:#382941;color:white}
+.soon-story{min-height:460px}
+@media(max-width:760px){nav{gap:0}nav a{padding:12px 13px;gap:6px}.nav-soon{font-size:9px}.inventory-row{padding:11px;gap:6px}.inventory-item{gap:10px}.inventory-actions{gap:5px}.soon-story{min-height:460px}}
+@media(max-width:360px){nav a{padding:12px 10px}.inventory-actions button{width:40px}.inventory-item .food.small{width:38px;height:42px;font-size:25px}}
+.food-picker-field{margin:18px 0;min-width:0}
+.food-picker-label{display:block;font-size:14px;margin-bottom:8px}
+.food-picker-toggle{display:flex;align-items:center;gap:12px;width:100%;border:1px solid #d5c9df;background:#faf8fc;color:#6a5579;border-radius:14px;padding:10px 14px;min-height:54px;text-align:left;font-size:14px}
+.food-picker-toggle>span:last-child{margin-left:auto}
+.chosen-food{font-size:29px;line-height:1.2}
+.food-choices{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:5px;max-height:225px;overflow:auto;overscroll-behavior:contain;padding:10px;margin-top:8px;border:1px solid var(--line);border-radius:17px;background:#f8f4fb}
+.food-choices[hidden]{display:none}
+.food-choices button{display:grid;place-items:center;min-width:0;min-height:44px;border-radius:12px;background:white;font-size:26px;border:2px solid transparent}
+.food-choices button[aria-pressed=true]{border-color:#9c7bb5;background:#eae0f3}
+@media(max-width:380px){.food-choices{grid-template-columns:repeat(5,minmax(0,1fr))}}
